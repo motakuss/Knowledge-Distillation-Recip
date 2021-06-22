@@ -18,5 +18,4 @@ class EarlyStopping:
             
         return False
 
-
 #todo seed

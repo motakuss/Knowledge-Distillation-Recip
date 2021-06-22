@@ -115,6 +115,13 @@ class TeacherAssistantModel(BaseModel):
         x = x.view(x.shape[0], -1)
         x = self.mlp(x)
         return x
+    
+    def extract_features(self,x):
+        x = self.layer1(x)
+        x = self.maxpool(x)
+        x = self.layer2(x)
+        x = self.maxpool(x)
+        return x
         
 # 8-layer model
 class TeacherModel(BaseModel):
