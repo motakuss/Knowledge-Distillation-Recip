@@ -44,13 +44,13 @@ def load_test(path):
     return acc, loss
                
     
-teacher_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_teacher'
-base_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_base'
-fitnet_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_fitnet'
-st_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_st'
-takd_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_takd'
-propose_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_propose_takd'
-ta_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_ta'
+teacher_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_teacher/cifar10_hist'
+base_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_base/cifar10_hist'
+fitnet_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_fitnet/cifar10_hist'
+st_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_st/cifar10_hist'
+takd_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_takd/cifar10_hist'
+propose_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_propose_takd/cifar10_hist'
+ta_path = '/home/morikawa/Documents/knowledge_distillation/pytorch/KD_recip/logs/train_ta/cifar10_hist'
 
 teacher_acc, teacher_loss, teacher_valacc, teacher_valloss = load_hist(teacher_path)
 ta_acc, ta_loss, ta_valacc, ta_valloss = load_hist(ta_path)
@@ -61,14 +61,14 @@ takd_acc, takd_loss, takd_valacc, takd_valloss = load_hist(takd_path)
 propose_acc, propsoe_loss, propose_valacc, propose_valloss = load_hist(propose_path)
 
 x = np.arange(100)
-plt.rcParams["font.size"] = 18
+plt.rcParams["font.size"] = 16
 
 plt.figure(figsize=(10,8))
+plt.plot(x, propose_valacc, '-', label='Proposed TAKD & Hint-based Training & Distillation')
+plt.plot(x, st_valacc, '-.', label='Distillation')
+plt.plot(x, fitnet_valacc,  '--', label='Hint-based Training & Distillation')
 plt.plot(x, takd_valacc, ':', label='TAKD')
-plt.plot(x, fitnet_valacc,  '--', label='Hint Learning and Distillaiton')
-plt.plot(x, propose_valacc, '-', label='Propsoed TAKD')
-plt.plot(x, st_valacc, '-.', label='Distillaiton')
-plt.plot(x, base_valacc,'-',linewidth=4, label='Baseline BP')
+plt.plot(x, base_valacc,'-', label='Baseline BP')
 plt.ylabel('validation accuracy')
 plt.ylim(0.65, 0.90)
 plt.xlabel('epoch')
