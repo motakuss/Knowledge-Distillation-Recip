@@ -1,5 +1,1 @@
-data/
-__pycache__/
-logs/
-*.sh
 plot.py
