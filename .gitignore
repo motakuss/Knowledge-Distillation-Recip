@@ -1,1 +1,4 @@
 plot.py
+/logs
+/data
+*.sh
