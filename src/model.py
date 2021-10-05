@@ -292,4 +292,3 @@ if __name__ == '__main__':
     print(teacher_output)
     print(student_output)
     print(ta_output)
-        
