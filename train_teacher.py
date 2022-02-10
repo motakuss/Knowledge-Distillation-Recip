@@ -137,6 +137,8 @@ def main():
         # test_loss: 0.662, test_accuracy: 0.819
         with open('./logs/train_teacher/test'+str(i)+'.pickle', mode='wb') as f:
             pickle.dump(test, f)
+
+        # test
     
 if __name__ == '__main__':
     main()
